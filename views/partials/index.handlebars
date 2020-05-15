@@ -1,52 +1,62 @@
-<div class="jumbotron jumbotron-fluid text-center" id="header">
-    
-    <h1 class="display-3" id="headertext">BURGER TIME!!!</h1>
- 
-</div>
-<div class=" container-fluid" id="lowerbody">
-    <h2 class="text-center" id="addburger">Add a Burger</h2>
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <form class="create-form text-center col-6 mb-4" id = "post-burger">
-
-                <div class="form-group">
-                    <label for="burg" id ="burg-name">Burger Name:</label>
-                    <input type="text" class="form-control" id="burger" name="name">
-                </div>
-                <button type="submit" class="btn btn-primary" id="burger-button">Add Burger</button>
-
-            </form>
-        </div>
+<div class="card">
+    <div id="main-title" class="text-center card-img-top">
+        <h1 class="text-center align-middle">Grocery Shopping List</h1>
     </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-5 ml-5">
-                <div class="card mb-3">
-                    <h2 class="text-center card-title pt-3">Burgers to be devoured</h2>
-
-                    <ul class="list-group card-body pl-3">
-                        {{#each burgers}}
-                        {{#unless devoured}}
-                        {{> burgers/burger-block devoured=true}}
-                        {{/unless}}
-                        {{/each}}
-                    </ul>
-                </div>
+    <div class="card-body">
+        <h5 class="card-title text-center">Instructions</h5>
+        <p class="card-text">Create a grocery shopping list and assign the item to someone in your hosehold. You can update your records when
+            the item has been purchased</p>
+        <form action="/products" method="POST">
+            <div class="form-group">
+                <label for="item">Item name</label>
+                <input name="item" type="text" class="form-control" id="item" placeholder="I'm running out of...">
             </div>
-            <div class="col-1"></div>
-            <div class="col-5 ml-3">
-                <div class="card mb-3">
-                    <h2 class="text-center card-title pt-3">Burgers devoured</h2>
-
-                    <ul class="list-group card-body pl-3">
-                        {{#each burgers}}
-                        {{#if devoured}}
-                        {{> burgers/burger-block devoured=false}}
-                        {{/if}}
-                        {{/each}}
-                    </ul>
-                </div>
+            <div class="form-group">
+                <label for="person">Person</label>
+                <input name="person" type="text" class="form-control" id="person" placeholder="Who's buying it...">
             </div>
-        </div>
+            <div class="text-center">
+                <button id="btnSubmit" type="submit" class="btn btn-lg btn-danger">Send</button>
+            </div>
+        </form>
     </div>
 </div>
+<br />
+<div id="pending" class="list-group">
+    <a href="#" class="text-center text-white list-group-item list-group-item-action bg-danger">
+        Pending
+    </a>
+    {{#each itemPending}}
+
+        <a href="#" class="d-flex justify-content-between list-group-item list-group-item-action">
+            <div>
+                <strong>Product:</strong> {{this.item}} ||
+                <strong>Who:</strong> {{this.person}}
+            </div>
+            <div>
+                <i class="fa fa-check" aria-hidden="true" data-mapid="{{this.id}}"></i>
+                <i class="fa fa-times" aria-hidden="true" data-mapid="{{this.id}}"></i>
+            </div>
+        </a>
+
+    {{/each}}
+</div>
+<br />
+<div id="completed" class="list-group">
+    <a href="#" class="text-center text-white list-group-item list-group-item-action bg-info">
+        Completed
+    </a>
+    {{#each itemComplete}}
+        <a href="#" class="d-flex justify-content-between list-group-item list-group-item-action">
+            <div>
+                <strong>Product:</strong> {{this.item}} ||
+                <strong>Who:</strong> {{this.person}}
+            </div>
+            <div>
+                <i class="fa fa-times" aria-hidden="true" data-mapid="{{this.id}}"></i>
+            </div>
+        </a>
+    {{/each}}
+</div>
+<br />
+<br />
