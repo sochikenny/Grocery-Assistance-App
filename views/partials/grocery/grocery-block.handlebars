@@ -1,0 +1,14 @@
+<li class="list-group-item">
+	{{item}}
+
+	{{#if purchased}}
+	<button class="change-purchased btn btn-success float-right" id="purchase-button" data-id="{{id}}" data-newpurchased="{{purchased}}">
+		<span>BOUGHT!</span>
+	</button>
+	{{/if}}
+	{{#unless purchased}}
+	<button class="delete-grocery btn btn-danger float-right" id="delete-button" data-id="{{id}}"> 
+		<span>DELETE</span>
+	</button>
+	{{/unless}}
+</li>

@@ -1,24 +1,21 @@
-// Requiring necessary npm packages
-var express = require("express");
-// Requiring passport as we've configured it
+const express = require("express");
+const PORT = process.env.PORT || 8080;
+const db = require("./models");
 
-// Setting up port and requiring models for syncing
-var PORT = process.env.PORT || 8080;
-var db = require("./models");
-
-// Creating express app and configuring middleware needed for authentication
-var app = express();
+const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-// Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
+const exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app);
+
+db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
+    console.log("App listening on PORT " + PORT);
   });
 });
