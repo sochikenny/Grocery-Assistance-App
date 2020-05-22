@@ -56,9 +56,7 @@ $(document).ready(function() {
     event.preventDefault();
     $(".supermarkets").remove();
     console.log(event);
-    var cityInput = $("#Search-City")
-      .val()
-      .trim();
+    var cityInput = $("#Search-City").val();
     searchLocation(cityInput);
     $("#card-body1").empty();
   });
