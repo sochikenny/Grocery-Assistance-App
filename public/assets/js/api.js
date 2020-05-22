@@ -1,26 +1,8 @@
-//Place API call.. Takes in zip code and spits out postal code place ID
-// var placeURL =
-//   "https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=market&types=establishment&location=37.76999,-122.44696&radius=500&key=AIzaSyCBMsGzEjyXZdesMU6K8WJrJco58Q0R674";
-
-//   "https://maps.googleapis.com/maps/api/place/findplacefromtext/output?parameters"
-
-// $.ajax({
-//   url: placeURL,
-//   method: "GET"
-// }).then(function(response) {
-//   //for (var i = 0; i < 5; i++){
-//   //console.log(response.restaurants[i].restaurant.user_rating.aggregate_rating);
-//   //console.log(response.restaurants[i].restaurant.timings);
-//   //console.log(response.restaurants[i].restaurant.location.locality);
-//   console.log(response);
-//   //console.log(response.results[i].title)
-//   //}
-// });
-function searchLocation(zipCode) {
+function searchLocation(cityInput) {
   var key = "&key=AIzaSyAtPSsLK6vd2cPiHSxryHM3OK98Kmenak4";
   var superMarketURL =
     "https://maps.googleapis.com/maps/api/place/textsearch/json?query=supermarkets+near+" +
-    zipCode +
+    cityInput +
     key;
 
   $.ajax({
@@ -28,19 +10,56 @@ function searchLocation(zipCode) {
     method: "GET"
   }).then(function(response) {
     for (var i = 0; i < 5; i++) {
-      console.log(response.results[i].name);
-      console.log(response.results[i].opening_hours);
-      console.log(response.results[i].formatted_address);
       console.log(response);
+      // Creating a div to hold the supermarket results
+      var supermarketsDiv = $("<div class='supermarkets'>");
+
+      // Storing the supermarket name
+      var name = response.results[i].name;
+      console.log(response.results[i].name);
+
+      // Creating an element to have name displayed
+      var pName = $("<h2>").text("Name: " + name);
+
+      // Appending the name dataset to contianer div
+      supermarketsDiv.append(pName);
+
+      // Storing the supermarket opening hours
+      var openHours = response.results[i].opening_hours;
+      console.log(response.results[i].opening_hours);
+
+      // Creating an element to have opening hours displayed
+      var pOpenHours = $("<h3>").text("Open: " + openHours);
+      console.log(pOpenHours);
+
+      // Appending the opening hours dataset to contianer div
+      supermarketsDiv.append(pOpenHours);
+
+      // Storing the supermarket opening hours
+      var addressInfo = response.results[i].formatted_address;
+      console.log(response.results[i].formatted_address);
+
+      // Creating an element to have opening hours displayed
+      var pAddressInfo = $("<h3>").text("Address: " + addressInfo);
+      console.log(response);
+
+      // Appending the opening hours dataset to contianer div
+      supermarketsDiv.append(pAddressInfo);
+
+      $("#results-view").prepend(supermarketsDiv);
     }
   });
 }
 
-$("#SearchBtn").on("click", function(event) {
-  event.preventDefault();
-  var cityinput = $("#Search-Term")
-    .val()
-    .trim();
-  searchLocation(cityinput);
-  $("#card-body1").empty();
+$(document).ready(function() {
+  $("#SearchBtn").on("click", function(event) {
+    event.preventDefault();
+    $(".supermarkets").remove();
+    console.log(event);
+    var cityInput = $("#Search-City")
+      .val()
+      .trim();
+    searchLocation(cityInput);
+    $("#card-body1").empty();
+  });
 });
