@@ -1,10 +1,17 @@
-<div class="jumbotron jumbotron-fluid text-center" id="header">
+<div class="card">
+    <div id="main-title" class="text-center card-img-top">
+    {{!--<div class="jumbotron jumbotron-fluid text-center" id="header"> --}}
 
-    <h1 class="display-3" id="headertext">Grocery Assistance App!!!</h1>
-<p>A grocery assitant that not only keeps track of whether items have been purchased or not but also locates the closest supermarkets in your area.</p>
+        <h1 class="display-3" id="headertext">Grocery Assistance App!!!</h1>
+    </div>
 
+    <div class="card-body">
+        <h5 class="card-title text-center">Instructions</h5>
+        <p>A grocery assitant that not only keeps track of whether items have been purchased or not but also locates the
+            closest supermarkets in your area.</p>
+
+    </div>
 </div>
-
 <div class=" container-fluid" id="lowerbody">
     <h2 class="text-center" id="addburger">Add your Item</h2>
     <div class="container-fluid">
@@ -12,7 +19,7 @@
             <form class="create-form text-center col-6 mb-4" id="post-grocery">
 
                 <div class="form-group">
-                    <label for="item" id ="item-name">Item Name:</label>
+                    <label for="item" id="item-name">Item Name:</label>
                     <input type="text" class="form-control" id="groceryitem" name="name">
                 </div>
                 <button type="submit" class="btn btn-primary" id="grocerybtn">Add</button>
