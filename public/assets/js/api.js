@@ -13,6 +13,7 @@ function searchLocation(cityInput) {
       console.log(response);
       // Creating a div to hold the supermarket results
       var supermarketsDiv = $("<div class='supermarkets'>");
+      var marketcardDiv = $("<div class= 'card'>");
 
       // Storing the supermarket name
       var name = response.results[i].name;
@@ -22,7 +23,8 @@ function searchLocation(cityInput) {
       var pName = $("<h3>").text("Name: " + name);
 
       // Appending the name dataset to contianer div
-      supermarketsDiv.append(pName);
+      marketcardDiv.append(pName);
+      //supermarketsDiv.append(pName);
 
       // Storing the supermarket opening hours
       var rating = response.results[i].rating;
@@ -33,7 +35,8 @@ function searchLocation(cityInput) {
       console.log(pRating);
 
       // Appending the opening hours dataset to contianer div
-      supermarketsDiv.append(pRating);
+      marketcardDiv.append(pRating);
+     // supermarketsDiv.append(pRating);
 
       // Storing the supermarket opening hours
       var addressInfo = response.results[i].formatted_address;
@@ -44,8 +47,11 @@ function searchLocation(cityInput) {
       console.log(response);
 
       // Appending the opening hours dataset to contianer div
-      supermarketsDiv.append(pAddressInfo);
+      marketcardDiv.append(pAddressInfo);
+      //supermarketsDiv.append(pAddressInfo);
 
+      supermarketsDiv.append(marketcardDiv);
+      
       $("#results-view").prepend(supermarketsDiv);
     }
   });
