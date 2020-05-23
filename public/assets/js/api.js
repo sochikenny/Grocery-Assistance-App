@@ -13,39 +13,45 @@ function searchLocation(cityInput) {
       console.log(response);
       // Creating a div to hold the supermarket results
       var supermarketsDiv = $("<div class='supermarkets'>");
+      var marketcardDiv = $("<div class= 'card'>");
 
       // Storing the supermarket name
       var name = response.results[i].name;
       console.log(response.results[i].name);
 
       // Creating an element to have name displayed
-      var pName = $("<h2>").text("Name: " + name);
+      var pName = $("<h3>").text("Name: " + name);
 
       // Appending the name dataset to contianer div
-      supermarketsDiv.append(pName);
+      marketcardDiv.append(pName);
+      //supermarketsDiv.append(pName);
 
       // Storing the supermarket opening hours
-      var openHours = response.results[i].opening_hours;
-      console.log(response.results[i].opening_hours);
+      var rating = response.results[i].rating;
+      console.log(response.results[i].rating);
 
       // Creating an element to have opening hours displayed
-      var pOpenHours = $("<h3>").text("Open: " + openHours);
-      console.log(pOpenHours);
+      var pRating = $("<p>").text("Rating: " + rating);
+      console.log(pRating);
 
       // Appending the opening hours dataset to contianer div
-      supermarketsDiv.append(pOpenHours);
+      marketcardDiv.append(pRating);
+     // supermarketsDiv.append(pRating);
 
       // Storing the supermarket opening hours
       var addressInfo = response.results[i].formatted_address;
       console.log(response.results[i].formatted_address);
 
       // Creating an element to have opening hours displayed
-      var pAddressInfo = $("<h3>").text("Address: " + addressInfo);
+      var pAddressInfo = $("<p>").text("Address: " + addressInfo);
       console.log(response);
 
       // Appending the opening hours dataset to contianer div
-      supermarketsDiv.append(pAddressInfo);
+      marketcardDiv.append(pAddressInfo);
+      //supermarketsDiv.append(pAddressInfo);
 
+      supermarketsDiv.append(marketcardDiv);
+      
       $("#results-view").prepend(supermarketsDiv);
     }
   });
@@ -56,9 +62,7 @@ $(document).ready(function() {
     event.preventDefault();
     $(".supermarkets").remove();
     console.log(event);
-    var cityInput = $("#Search-City")
-      .val()
-      .trim();
+    var cityInput = $("#Search-City").val();
     searchLocation(cityInput);
     $("#card-body1").empty();
   });
