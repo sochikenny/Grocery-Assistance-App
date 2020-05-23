@@ -4,14 +4,14 @@ var db = require("../models");
 // =============================================================
 module.exports = function(app) {
   app.get("/api/grocery", function(req, res) {
-    db.grocery.findAll({}).then(function(dbgrocery) {
-      res.json(dbgrocery);
+    db.Grocery.findAll({}).then(function(dbgrocery) {
+       res.json(dbgrocery);
     });
   });
 
-
   app.post("/api/grocery", function(req, res) {
-    db.grocery.create({
+    db.Grocery.create(
+      {
       item: req.body.item,
       purchased: req.body.purchased
     })
@@ -25,7 +25,7 @@ module.exports = function(app) {
 
 
   app.delete("/api/grocery/:id", function(req, res) {
-    db.grocery.destroy({
+    db.Grocery.destroy({
       where: {
         id: req.params.id
       }
@@ -35,15 +35,15 @@ module.exports = function(app) {
   });
 
 
-  app.put("/api/grocery", function(req, res) {
-    db.grocery.update(
+  app.put("/api/grocery/:id", function(req, res) {
+    db.Grocery.update(
       {
-        item: req.body.item,
+        // item: req.body.item,
         purchased: req.body.purchased
       },
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       }
     )

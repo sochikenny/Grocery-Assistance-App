@@ -29,7 +29,7 @@
                     <ul class="list-group card-body pl-3">
                         {{#each grocery}}
                         {{#unless purchased}}
-                        {{> grocery/grocery-block devoured=true}}
+                        {{> grocery/grocery-block purchased=true}}
                         {{/unless}}
                         {{/each}}
                     </ul>
@@ -43,7 +43,7 @@
                     <ul class="list-group card-body pl-3">
                         {{#each grocery}}
                         {{#if purchased}}
-                        {{> grocery/grocery-block devoured=false}}
+                        {{> grocery/grocery-block purchased=false}}
                         {{/if}}
                         {{/each}}
                     </ul>

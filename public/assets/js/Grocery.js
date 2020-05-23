@@ -1,6 +1,8 @@
-$(document).ready(function(){
+$(function() {
 
-    $("#purchase-button").on("click", function (event) {
+    $(".change-purchased").on("click", function (event) {
+      console.log("change click");
+      
       var id = $(this).data("id");
       var newpurchased = $(this).data("newpurchased");
   
@@ -20,13 +22,14 @@ $(document).ready(function(){
     });
   
     $("#post-grocery").on("submit", function (event) {
+      console.log(event);
+      
       event.preventDefault();
   
       var newGroceryitem = {
         item: $("#groceryitem").val().trim(),
       };
   
-      
       $.ajax("/api/grocery", {
         type: "POST",
         data: newGroceryitem
@@ -51,5 +54,5 @@ $(document).ready(function(){
         );
     
       });
-      
-    });
+    
+ });
