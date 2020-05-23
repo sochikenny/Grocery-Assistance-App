@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
 
     $(".change-purchased").on("click", function (event) {
       console.log("change click");
