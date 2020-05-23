@@ -16,10 +16,10 @@
       "dialect": "mysql"
     },
     "production": {
-      "username": "root",
-      "password": "Fairfield19",
-      "database": "grocerylist",
-      "host": "127.0.0.1",
+      "username": "vbdkomcrd8c7bfct",
+      "password": "aii2akkuw4qb14a8",
+      "database": "w9g5kewtdg1uwub2",
+      "host": "q68u8b2buodpme2n.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
       "port": 3306,
       "dialect": "mysql"
     }
