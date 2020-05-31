@@ -11,8 +11,9 @@ The simple app that helps users with grocery shopping. It lets users organize th
 View Page https://groceryassistance.herokuapp.com/
 
 When visiting the site:
-*Make sure you use this link in Google Chrome 
-*Make sure add the chrome extension "Moesif Orign & CORS Changer"
+1) Make sure you use this link in Google Chrome 
+
+2) Make sure add the chrome extension "Moesif Orign & CORS Changer"
 
 
 ### Technologies Used
