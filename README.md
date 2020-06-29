@@ -15,6 +15,9 @@ When visiting the site:
 
 2) Make sure add the chrome extension "Moesif Orign & CORS Changer"
 
+3) Unfortuately,this is only fully supported by Google Chrome through with the extension because of the third party API being utilized on the stores page. 
+Please adhere to the first two instructions to fully benefit from the web application. 
+
 
 ### Technologies Used
 
@@ -52,5 +55,7 @@ When visiting the site:
 * Adding more design and maybe some animations 
 * Adding options to save a compiled list for items
 * Security development for user such as a sign up email and login page
+* Making sure that the application is fully supported by other web browers
 * Adding another third party api that can render dat on what prices of products are in certain stores
+* Hopefully, purchasing a better third party API for to supply store data instead of using free third party API's that are restrictive
 * Linking the different addresses on the following stores rendered on the stores page to google maps for instant navigation benefits
