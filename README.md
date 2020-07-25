@@ -8,7 +8,7 @@ The simple app that helps users with grocery shopping. It lets users organize th
 
 ### Live Site
 
-View Page https://groceryassistance.herokuapp.com/
+View Page <a href='https://groceryassistance.herokuapp.com/'>HERE</a>
 
 When visiting the site:
 1) Make sure you use this link in Google Chrome 
